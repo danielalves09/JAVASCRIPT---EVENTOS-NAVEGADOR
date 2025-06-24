@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="text">
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+
+
+
+    <div id="draggable" class="draggable" draggable="true">
+        Arrastar
+    </div>
+
+    <div id="dropzone" class="dropzone">
+        soltar
+
+    </div>
+
+    <script>
+        const ul = document.querySelector('ul');
+        ul.addEventListener('click', function (){
+            alert();
+
+        })
+        
+    </script>
+
+
+     
+    <script>
+         const draggable = document.querySelector('#draggable');   
+        const dropzone = document.querySelector('#dropzone')
+        
+        draggable.addEventListener('dragstart', function (event){
+            console.log('dragstart');
+            event.dataTransfer.setData("text/plain", event.target.id);
+
+        })
+
+        dropzone.addEventListener('dragover', function(event){
+             console.log('dragstart');
+            event.preventDefault();          
+
+
+        })
+
+        dropzone.addEventListener('drop', function(event){
+            console.log('drop');
+            event.preventDefault();
+            const draggableId = event.dataTransfer.getData("text/plain");
+            const draggableElement = document.getElementById(draggableId);
+
+            dropzone.appendChild(draggableElement);
+
+        })
+
+
+
+
+    </script>
+</body>
+</html>
